@@ -1,5 +1,5 @@
 # Unscramble_GUI
-A python application with a barebones GUI that provides all unscrambled words formed from the feeded string.
+A python application with a barebones GUI that provides all unscrambled words formed from all subsets of the feeded string. Using a rudimentary hash table for each word in the dictionary, the unscrambling is carried out efficiently (until the time the application is closed or forced to stop).
 
 The GUI, in its bare form, creates a table of all words formed by every possible subset of the input string and creates a table of words separated by the number of letters in it.
 
