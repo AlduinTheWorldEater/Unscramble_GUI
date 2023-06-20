@@ -100,6 +100,9 @@ word_entry.grid(row = 1, column = 3, columnspan = 4, padx = 10, pady = 10, stick
 word_submit = Button(frame, text = "Submit", command = lambda: tabling(wordvar.get()))
 word_submit.grid(row = 1, column = 7, padx = 10, pady = 10, sticky = E)
 
+# Bind the Enter key to the Submit action ONLY IF THE TEXT FIELD IS SELECTED.
+word_entry.bind("<Return>", lambda event: tabling(wordvar.get()))
+
 #Entry of the lettr weights (individually)
 
 weight_var_list = [IntVar(), IntVar(), IntVar(), IntVar(), IntVar(),
@@ -125,6 +128,9 @@ for i in range(26):
 
 scrollbar_y.config(orient = VERTICAL, command = canv.yview)
 scrollbar_x.config(orient = HORIZONTAL, command = canv.xview)
+
+# Allow the Mouse Wheel to scroll through the canvas window
+canv.bind_all("<MouseWheel>", lambda event: canv.yview_scroll(int(-1 * event.delta / 120), "units"))
 
 canv.update_idletasks()    
 canv.config(xscrollcommand = scrollbar_x.set, yscrollcommand = scrollbar_y.set, scrollregion = frame.bbox("all"))
